@@ -1,0 +1,18 @@
+[project]
+name = "framework-python"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = [
+    "alembic>=1.18.4",
+    "bcrypt<4.0.0",
+    "email-validator>=2.3.0",
+    "fastapi[standard]>=0.129.0",
+    "jinja2>=3.1.6",
+    "mjml>=0.12.0",
+    "passlib>=1.7.4",
+    "psycopg[binary]>=3.3.3",
+    "pydantic-settings>=2.12.0",
+    "pyjwt>=2.11.0",
+    "sqlalchemy>=2.0.46",
+    "sqlmodel>=0.0.34",
+]

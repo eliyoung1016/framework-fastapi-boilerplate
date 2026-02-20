@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "astral-sh.ty",
+        "charliermarsh.ruff",
+        "docker.docker",
+        "ms-playwright.playwright",
+        "ms-python.python",
+        "tombi-toml.tombi",
+        "ms-azuretools.vscode-docker",
+        "eamodio.gitlens"
+    ]
+}

@@ -1,0 +1,27 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://user:password@postgres:5432/framework
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+      - /app/.venv
+    command: uv run fastapi dev --host 0.0.0.0
+
+  postgres:
+    image: postgres:18
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=framework
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+volumes:
+  postgres_data:

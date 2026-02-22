@@ -1,10 +1,12 @@
 import logging
-from sqlalchemy.orm import Session
 from datetime import datetime, timezone
-from app.core.db import SessionLocal
+
+from sqlalchemy.orm import Session
+
 from app.core.config import settings
-from app.models.user import User, UserRole
+from app.core.db import SessionLocal
 from app.core.security import get_password_hash
+from app.models.user import User, UserRole
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)

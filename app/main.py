@@ -1,10 +1,12 @@
-import time
 import logging
+import time
 from contextlib import asynccontextmanager
+
+from alembic import command
+from alembic.config import Config
 from fastapi import FastAPI
 from sqlalchemy import create_engine
-from alembic.config import Config
-from alembic import command
+
 from app.api.api_v1.api import api_router
 from app.core.config import settings
 from app.core.db import DATABASE_URL

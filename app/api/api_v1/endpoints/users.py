@@ -1,17 +1,18 @@
+from datetime import datetime, timezone
 from typing import Any
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from datetime import datetime, timezone
 
 from app.api import deps
 from app.core import security
 from app.models.user import User, UserRole
 from app.schemas.user import (
     UserCreate,
+    UserListResponse,
+    UserPasswordUpdate,
     UserResponse,
     UserUpdateMe,
-    UserPasswordUpdate,
-    UserListResponse,
 )
 
 router = APIRouter()

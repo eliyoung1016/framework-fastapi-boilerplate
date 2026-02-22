@@ -1,12 +1,13 @@
 from pydantic import BaseModel
-from typing import Optional
+
 
 class Token(BaseModel):
     access_token: str
     token_type: str = "bearer"
-    refresh_token: Optional[str] = None
+    refresh_token: str | None = None
+
 
 class TokenPayload(BaseModel):
-    sub: Optional[str] = None
-    exp: Optional[int] = None
-    refresh: Optional[bool] = False
+    sub: str | None = None
+    exp: int | None = None
+    refresh: bool | None = False

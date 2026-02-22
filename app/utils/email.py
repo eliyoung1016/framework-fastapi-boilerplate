@@ -1,9 +1,10 @@
 import logging
-from pathlib import Path
-from jinja2 import Environment, FileSystemLoader
-from mjml import mjml_to_html
 import smtplib
 from email.message import EmailMessage
+from pathlib import Path
+
+from jinja2 import Environment, FileSystemLoader
+from mjml import mjml_to_html
 
 from app.core.config import settings
 

@@ -1,13 +1,14 @@
 from datetime import timedelta
+
+import jwt
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
-from sqlalchemy.orm import Session
-import jwt
 from pydantic import BaseModel, ValidationError
+from sqlalchemy.orm import Session
 
+from app.api import deps
 from app.core import security
 from app.core.config import settings
-from app.api import deps
 from app.models.user import User
 from app.schemas.token import Token, TokenPayload
 from app.utils.email import send_reset_password_email
@@ -56,7 +57,7 @@ def refresh_token(token: str, db: Session = Depends(deps.get_db)):
             raise HTTPException(
                 status_code=403, detail="Could not validate credentials"
             )
-    except jwt.PyJWTError, ValidationError:
+    except (jwt.PyJWTError, ValidationError):
         raise HTTPException(status_code=403, detail="Could not validate credentials")
 
     user = db.query(User).filter(User.id == int(token_data.sub)).first()
@@ -108,7 +109,7 @@ def reset_password(body: ResetPasswordInput, db: Session = Depends(deps.get_db))
         email = payload.get("sub")
         if not email:
             raise HTTPException(status_code=400, detail="Invalid token")
-    except jwt.PyJWTError, ValidationError:
+    except (jwt.PyJWTError, ValidationError):
         raise HTTPException(status_code=403, detail="Invalid token")
 
     user = db.query(User).filter(User.email == email).first()

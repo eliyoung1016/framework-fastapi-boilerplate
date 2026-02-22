@@ -1,8 +1,11 @@
-from sqlalchemy import Integer, Boolean, DateTime, Enum as SAEnum
+import enum
+from datetime import datetime, timezone
+
+from sqlalchemy import Boolean, DateTime, Integer
+from sqlalchemy import Enum as SAEnum
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlmodel.sql.sqltypes import AutoString
-from datetime import datetime, timezone
-import enum
+
 from .base import Base
 
 

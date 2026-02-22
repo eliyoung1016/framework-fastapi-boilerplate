@@ -17,6 +17,24 @@ This project is configured to run with Docker Compose, including a PostgreSQL da
 2.  The application will be available at http://localhost:8000.
     ```
 
+## Email Configuration
+
+To enable the application to send real emails (like the test email endpoint or password resets), you must configure your SMTP settings. 
+
+You can set these values by creating a `.env` file in the root directory and Docker Compose will automatically pick them up:
+
+```env
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email@gmail.com
+SMTP_PASSWORD=your_app_password
+SMTP_TLS=True
+EMAILS_FROM_EMAIL=your_email@gmail.com
+EMAILS_FROM_NAME="My App"
+```
+
+If these are not set, the application will fallback to printing the email content to the console.
+
 ## Stopping the Application
 
 To stop the services:

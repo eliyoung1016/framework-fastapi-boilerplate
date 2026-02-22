@@ -1,10 +1,12 @@
 services:
   app:
+    container_name: app
     build: .
     ports:
       - "8000:8000"
     environment:
       - DATABASE_URL=postgresql://user:password@postgres:5432/framework
+      - PYTHONUNBUFFERED=1
     depends_on:
       - postgres
     volumes:
@@ -13,6 +15,7 @@ services:
     command: uv run fastapi dev --host 0.0.0.0
 
   postgres:
+    container_name: postgres
     image: postgres:18
     environment:
       - POSTGRES_USER=user
